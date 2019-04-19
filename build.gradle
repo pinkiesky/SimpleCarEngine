@@ -1,21 +1,47 @@
-plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.3.21'
+apply plugin: 'java'
+apply plugin: 'kotlin'
+
+buildscript {
+    ext.kotlin_version = '1.3.21'
+    repositories {
+        mavenCentral()
+        jcenter()
+
+        maven {
+            url  "https://dl.bintray.com/kotlin/kotlin-dev/"
+        }
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
 }
 
-group 'ru.zinin.a'
-version '1.0-SNAPSHOT'
+
+version = '2.1.2'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+def mainClass = 'Main'
+
+
+//create a single Jar with all dependencies
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'SimpleCar',
+                'Implementation-Version': version,
+                'Main-Class': mainClass
+    }
+    baseName = project.name + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
 
 repositories {
     mavenCentral()
+    mavenLocal()
+
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-}
-
-compileKotlin {
-    kotlinOptions.jvmTarget = "1.8"
-}
-compileTestKotlin {
-    kotlinOptions.jvmTarget = "1.8"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 }
