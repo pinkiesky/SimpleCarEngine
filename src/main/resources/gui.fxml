@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="160.0" prefWidth="438.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MainController">
+   <children>
+      <Slider fx:id="throttleSlider" blockIncrement="5.0" layoutX="14.0" layoutY="14.0" prefHeight="38.0" prefWidth="200.0" showTickLabels="true" showTickMarks="true" />
+      <ProgressBar fx:id="rpmBar" layoutX="14.0" layoutY="52.0" prefWidth="200.0" progress="0.0" />
+      <Label fx:id="rpmLabel" layoutX="96.0" layoutY="72.0" text="TBD">
+         <font>
+            <Font name="Monospaced Regular" size="13.0" />
+         </font>
+      </Label>
+      <Slider fx:id="gearSlider" layoutX="14.0" layoutY="88.0" majorTickUnit="1.0" max="7.0" minorTickCount="0" prefHeight="38.0" prefWidth="200.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+      <ProgressBar fx:id="speedBar" layoutX="214.0" layoutY="52.0" prefWidth="200.0" progress="0.0" />
+      <Label fx:id="speedLabel" layoutX="296.0" layoutY="72.0" text="TBD">
+         <font>
+            <Font name="Monospaced Regular" size="13.0" />
+         </font>
+      </Label>
+      <ToggleButton fx:id="engineToggleButton" layoutX="245.0" layoutY="14.0" mnemonicParsing="false" text="Engine" />
+   </children>
+</AnchorPane>
